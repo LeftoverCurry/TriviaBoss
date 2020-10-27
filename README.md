@@ -5,9 +5,19 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby Version:
+  * 2.6.3
 
-* System dependencies
+* Rails Version:
+  * 6.0.3
+  
+* Gems
+  * Pry - Colorful debugging in the Rails Console
+  * Rspec - Human language-like testing for rails
+  * FactoryBot - Generate factories instead of fixtures for testing
+  * Faker - Randomized Data for Testing
+  * Annotate - Schema Documentation on model objects 
+  * Yard - Standardized Documentation
 
 * Configuration
 
