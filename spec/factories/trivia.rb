@@ -11,8 +11,8 @@
 #
 FactoryBot.define do
   factory :trivium do
-    question { "MyString" }
-    incorrect { "MyString" }
-    correct { "MyString" }
+    question { Faker::Lorem.question }
+    incorrect { Faker::Lorem.words(number: 3) }
+    correct { Faker::Lorem.word }
   end
 end
