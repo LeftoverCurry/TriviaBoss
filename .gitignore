@@ -31,7 +31,6 @@ yarn-debug.log*
 .yarn-integrity
 
 # Ignore Editor Config files
-### VisualStudioCode ###
 .history
 .ionide
-.vscode/launch.json
+.vscode
