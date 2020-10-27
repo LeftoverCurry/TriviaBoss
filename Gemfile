@@ -47,6 +47,8 @@ group :development do
 end
 
 group :test do
+  # Testing libraries
+  gem 'shoulda-matchers' # Provides additional testing DSL to RSpec
   # System Testing
   gem 'capybara', '>= 2.15' # Framework for system tests
   gem 'selenium-webdriver' # System test driver
