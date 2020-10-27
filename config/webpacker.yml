@@ -1,6 +1,8 @@
 # Note: You must restart bin/webpack-dev-server for changes to take effect
 
 default: &default
+
+  # Source path changed from app/javascript to app/frontend to reflect that it is also serving SCSS files.
   source_path: app/frontend
   source_entry_path: packs
   public_root_path: public
