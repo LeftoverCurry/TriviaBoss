@@ -11,6 +11,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { create :user }
-  it { is_expected.to validate_uniqueness_of :name }
+  describe 'validations' do
+    subject { create :user }
+
+    it { should validate_presence_of(:name) }
+    it { should validate_uniqueness_of(:name) }
+    it { should validate_presence_of(:password) }
+  end
 end
