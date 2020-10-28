@@ -16,6 +16,9 @@ gem 'pg', '>= 0.18', '< 2.0' # Postgres DB.
 # Servers
 gem 'puma', '~> 4.1' # Use Puma as the app server
 
+# User Authentication
+gem 'devise' # Industry Standard user authentication
+
 # Front End Compilers and Magical Artifacts
 gem 'bootsnap', '>= 1.4.2', require: false # Speeds up loading by packaging imports and requires.
 gem 'turbolinks', '~> 5' # Makes server-side rendered SPA's kinda possible.
