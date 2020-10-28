@@ -19,6 +19,6 @@
 FactoryBot.define do
   factory :quiz do
     score { 1 }
-    user { nil }
+    user { user }
   end
 end

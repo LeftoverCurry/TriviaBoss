@@ -18,4 +18,6 @@
 #
 class Quiz < ApplicationRecord
   belongs_to :user
+  has_many :quiz_trivium
+  has_many :trivia, through: :quiz_trivium
 end
