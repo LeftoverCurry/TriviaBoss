@@ -12,5 +12,15 @@
 require 'rails_helper'
 
 RSpec.describe Trivium, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    subject { create :trivium }
+    it { should validate_presence_of(:question) }
+    it { should validate_uniqueness_of(:question) }
+    it { should validate_presence_of(:correct) }
+    it { should validate_presence_of(:incorrect) }
+  end
+
+  describe 'associations' do
+    it { should have_many(:quizzes) }
+  end
 end

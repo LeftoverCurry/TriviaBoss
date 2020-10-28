@@ -10,4 +10,9 @@
 #  updated_at :datetime         not null
 #
 class Trivium < ApplicationRecord
+  validates :question, presence: true, uniqueness: true
+  validates :correct, presence: true
+  validates :incorrect, presence: true
+  has_many :quiz_trivium
+  has_many :quizzes, through: :quiz_trivium
 end
