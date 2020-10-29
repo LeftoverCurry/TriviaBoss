@@ -20,4 +20,16 @@ class Quiz < ApplicationRecord
   belongs_to :user
   has_many :quiz_trivium
   has_many :trivia, through: :quiz_trivium
+
+  after_create :generate_questions
+
+  private
+
+  def generate_questions
+    all_ids = Trivium.ids
+    random_ids = []
+
+    10.times { random_ids << all_ids.delete(all_ids.sample) }
+    trivia << Trivium.where(id: random_ids)
+  end
 end
