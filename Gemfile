@@ -29,6 +29,7 @@ gem 'sass-rails', '>= 6' # Use SCSS for stylesheets
 
 # Debugging
 gem 'pry' # Beautiful debugging.
+gem 'pry-rails' # Use pry instead of IRB for console
 
 group :development, :test do
   # Testing and support
