@@ -1,7 +1,28 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# frozen_string_literal: true
+
+# Seedfile populates the Database with data provided for the code challenge.
+FILE = 'db/seed_data/trivia.json'
+
+# Parses the provided JSON file
+trivia = JSON.parse(File.read(FILE))
+
+# Iterates over the resulting hash and creates a new Trivium object for each one.
+trivia.each do |trivium|
+  Trivium.find_or_create_by!(trivium)
+end
+
+puts "*  Seeded #{trivia.count} trivia questions from #{FILE}. Your #{Rails.env} database now
+ contains #{Trivium.count} questions in total."
+
+# Seed a user and a quiz for development debugging
+if Rails.env == 'development'
+  # Seeds a test user
+  user = User.new(name: 'test_user', password: 'password', email: 'test_user@example.com')
+  user.save!
+
+  # Seeds a quiz
+  Quiz.create!(user: user)
+
+  puts "*  Seeded a user (name: 'test_user', password: 'password', email: 'test_user@example.com') and
+  one quiz for that user into the development database."
+end
