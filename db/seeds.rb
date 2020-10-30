@@ -7,8 +7,9 @@ FILE = 'db/seed_data/trivia.json'
 trivia = JSON.parse(File.read(FILE))
 
 # Iterates over the resulting hash and creates a new Trivium object for each one.
-trivia.each do |trivium|
-  Trivium.find_or_create_by!(trivium)
+trivia.each do |prompt|
+  prompt['prompt'] = prompt.delete 'question'
+  Trivium.find_or_create_by!(prompt)
 end
 
 puts "*  Seeded #{trivia.count} trivia questions from #{FILE}. Your #{Rails.env} database now

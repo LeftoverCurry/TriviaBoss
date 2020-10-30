@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_29_235013) do
+ActiveRecord::Schema.define(version: 2020_10_30_175356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "questions", force: :cascade do |t|
+    t.bigint "trivium_id", null: false
+    t.bigint "quiz_id", null: false
+    t.string "response"
+    t.boolean "is_correct?"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quiz_id"], name: "index_questions_on_quiz_id"
+    t.index ["trivium_id"], name: "index_questions_on_trivium_id"
+  end
 
   create_table "quiz_trivia", force: :cascade do |t|
     t.bigint "quiz_id", null: false
@@ -35,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_10_29_235013) do
   end
 
   create_table "trivia", force: :cascade do |t|
-    t.string "question"
+    t.string "prompt"
     t.string "incorrect", array: true
     t.string "correct"
     t.datetime "created_at", precision: 6, null: false
@@ -55,6 +66,8 @@ ActiveRecord::Schema.define(version: 2020_10_29_235013) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "questions", "quizzes"
+  add_foreign_key "questions", "trivia"
   add_foreign_key "quiz_trivia", "quizzes"
   add_foreign_key "quiz_trivia", "trivia"
   add_foreign_key "quizzes", "users"
