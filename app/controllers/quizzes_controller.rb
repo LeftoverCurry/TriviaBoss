@@ -1,13 +1,44 @@
 class QuizzesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_quiz, only: %i[show update]
+
+  # GET /quizzes
+  # GET /quizzes.json
   def index
+    @quizzes = Quiz.where(user_id: current_user.id)
   end
 
-  def new
-  end
+  # GET /quizzes/1
+  # GET /quizzes/1.json
+  def show; end
 
-  def show
-  end
-
+  # POST /quizzes
+  # POST /quizzes.json
   def create
+    @quiz = Quiz.new(user_id: current_user.id)
+
+    redirect_to question_path
+  end
+
+  # PATCH/PUT /quizzes/1
+  # PATCH/PUT /quizzes/1.json
+  def update
+    if @quiz.save!
+      redirect_to @quiz, notice: 'Quiz was successfully created.'
+    else
+      render :new
+    end
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_quiz
+    @quiz = Quiz.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def quiz_params
+    params.fetch(:quiz, {})
   end
 end

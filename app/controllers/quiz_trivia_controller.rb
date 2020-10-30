@@ -1,4 +1,5 @@
 class QuizTriviaController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_quiz_trivium, only: %i[show edit update]
 
   # GET /quiz_trivia/1

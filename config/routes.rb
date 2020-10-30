@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'question', to: 'questions#edit', as: :question
   get 'answer', to: 'questions#show', as: :answer
   put 'respond', to: 'questions#update', as: :respond
-  resources :quizzes, only: %i[index new show create]
+  resources :quizzes, only: %i[index show create]
   resources :questions, controller: 'quiz_trivia', only: %i[edit update show]
 
   devise_for :users
