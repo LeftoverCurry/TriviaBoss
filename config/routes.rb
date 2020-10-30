@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :questions
   root to: 'quizzes#index'
   get 'question', to: 'quiz_trivia#edit', as: :question
   get 'answer', to: 'quiz_trivia#show', as: :answer
