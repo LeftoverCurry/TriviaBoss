@@ -15,9 +15,9 @@ class QuizzesController < ApplicationController
   # POST /quizzes
   # POST /quizzes.json
   def create
-    @quiz = Quiz.new(user_id: current_user.id)
-
-    redirect_to question_path
+    @quiz = Quiz.create!(user_id: current_user.id)
+    @question_id = @quiz.quiz_trivium.first.id
+    redirect_to question_path(id: @question_id)
   end
 
   # PATCH/PUT /quizzes/1
@@ -39,6 +39,6 @@ class QuizzesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def quiz_params
-    params.fetch(:quiz, {})
+    params.require(:quiz).permit(:id, :score)
   end
 end
