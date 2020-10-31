@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: %i[show edit update]
 
   # GET /questions
   # GET /questions.json
@@ -10,6 +10,15 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    quiz_questions = Question.where(quiz_id: @question.quiz_id)
+    available_questions = quiz_questions.where(response: [nil, ''])
+
+    @done = available_questions.empty?
+    @score = quiz_questions.where(is_correct: true).count
+    @quiz = @question.quiz
+    return if @done
+
+    @question = available_questions.first
   end
 
   # GET /questions/new
@@ -18,57 +27,28 @@ class QuestionsController < ApplicationController
   end
 
   # GET /questions/1/edit
-  def edit
-  end
-
-  # POST /questions
-  # POST /questions.json
-  def create
-    @question = Question.new(question_params)
-
-    respond_to do |format|
-      if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render :show, status: :created, location: @question }
-      else
-        format.html { render :new }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  def edit; end
 
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
-    respond_to do |format|
-      if @question.update(question_params)
-        format.html { redirect_to @question, notice: 'Question was successfully updated.' }
-        format.json { render :show, status: :ok, location: @question }
-      else
-        format.html { render :edit }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /questions/1
-  # DELETE /questions/1.json
-  def destroy
-    @question.destroy
-    respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    @question.update_attributes(is_correct: @question.trivium.correct == (params[:response]),
+                                response: question_params['response'])
+    redirect_to @question
+    # else
+    #   render :edit, message: 'You must enter an answer!'
+    # end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_question
-      @question = Question.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def question_params
-      params.require(:question).permit(:trivia_id, :quiz_id, :response, :is_correct?)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_question
+    @question = Question.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def question_params
+    params.require(:question).permit(:trivia_id, :quiz_id, :response, :is_correct)
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_30_175356) do
+ActiveRecord::Schema.define(version: 2020_10_30_203404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_10_30_175356) do
     t.bigint "trivium_id", null: false
     t.bigint "quiz_id", null: false
     t.string "response"
-    t.boolean "is_correct?"
+    t.boolean "is_correct"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["quiz_id"], name: "index_questions_on_quiz_id"

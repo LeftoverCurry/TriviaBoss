@@ -2,13 +2,13 @@
 #
 # Table name: questions
 #
-#  id          :bigint           not null, primary key
-#  is_correct? :boolean
-#  response    :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  quiz_id     :bigint           not null
-#  trivium_id  :bigint           not null
+#  id         :bigint           not null, primary key
+#  is_correct :boolean
+#  response   :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  quiz_id    :bigint           not null
+#  trivium_id :bigint           not null
 #
 # Indexes
 #

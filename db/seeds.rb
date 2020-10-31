@@ -24,6 +24,6 @@ if Rails.env == 'development'
   # Seeds a quiz
   Quiz.create!(user: user)
 
-  puts "*  Seeded a user (name: 'test_user', password: 'password', email: 'test_user@example.com') and
-  one quiz for that user into the development database."
+  puts "*  Seeded a user (name: 'test_user', password: 'password', email: 'test_user@example.com') and one quiz for that
+  user into the development database."
 end

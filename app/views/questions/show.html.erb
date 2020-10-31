@@ -1,24 +1,18 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Trivia:</strong>
-  <%= @question.trivia_id %>
+	<strong>Trivia:</strong>
+	<%= @question.trivium.prompt %>
 </p>
-
 <p>
-  <strong>Quiz:</strong>
-  <%= @question.quiz_id %>
+	<strong>Response:</strong>
+	<%= @question.response %>
 </p>
-
 <p>
-  <strong>Response:</strong>
-  <%= @question.response %>
+	<strong>Is correct:</strong>
+	<%= @question.is_correct.to_s %>
 </p>
-
-<p>
-  <strong>Is correct?:</strong>
-  <%= @question.is_correct? %>
-</p>
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<% if @done %>
+	<%= link_to  "See Results", quiz_path(id: @quiz.id, quiz: {id: @quiz.id, score: @score}), method: :put %>
+<% else %>
+	<%= link_to 'Next Question', edit_question_path(@question) %>
+<% end %>

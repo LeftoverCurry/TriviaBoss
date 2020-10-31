@@ -16,18 +16,15 @@ class QuizzesController < ApplicationController
   # POST /quizzes.json
   def create
     @quiz = Quiz.create!(user_id: current_user.id)
-    @question_id = @quiz.quiz_trivium.first.id
-    redirect_to question_path(id: @question_id)
+    id = @quiz.questions.first.id
+    redirect_to ask_question_path(id: id)
   end
 
   # PATCH/PUT /quizzes/1
   # PATCH/PUT /quizzes/1.json
   def update
-    if @quiz.save!
-      redirect_to @quiz, notice: 'Quiz was successfully created.'
-    else
-      render :new
-    end
+    @quiz.update(quiz_params)
+    redirect_to @quiz
   end
 
   private
