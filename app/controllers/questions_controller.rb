@@ -1,14 +1,10 @@
+# frozen_string_literal: true
+
+# Controller class for the Quiz-Trivium through table.
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update]
 
-  # GET /questions
-  # GET /questions.json
-  def index
-    @questions = Question.all
-  end
-
-  # GET /questions/1
-  # GET /questions/1.json
+  # GET /answer
   def show
     quiz_questions = Question.where(quiz_id: @question.quiz_id)
     available_questions = quiz_questions.where(response: [nil, ''])
@@ -21,23 +17,15 @@ class QuestionsController < ApplicationController
     @question = available_questions.first
   end
 
-  # GET /questions/new
-  def new
-    @question = Question.new
-  end
-
-  # GET /questions/1/edit
+  # GET /question
   def edit; end
 
-  # PATCH/PUT /questions/1
-  # PATCH/PUT /questions/1.json
+  # PATCH/PUT /respond
   def update
-    @question.update_attributes(is_correct: @question.trivium.correct == (params[:response]),
+    @question.update_attributes(is_correct: @question.trivium.correct ==
+                                            (params[:response]),
                                 response: question_params['response'])
     redirect_to @question
-    # else
-    #   render :edit, message: 'You must enter an answer!'
-    # end
   end
 
   private
