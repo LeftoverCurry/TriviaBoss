@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-# Controller class for the Quiz-Trivium through table.
+# Controller class for the Quiz-Trivium join table.
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_question, only: %i[show edit update]
 
   # GET /answer
