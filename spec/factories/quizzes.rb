@@ -18,7 +18,12 @@
 #
 FactoryBot.define do
   factory :quiz do
-    score { 1 }
+    score { rand(1..10) }
     user { build :user }
+
+    factory :quiz_invalid do
+      score { 'string' }
+      user { nil }
+    end
   end
 end

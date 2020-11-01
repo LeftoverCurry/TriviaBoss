@@ -1,14 +1,4 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Score:</strong>
-  <%= @quiz.score %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @quiz.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_quiz_path(@quiz) %> |
-<%= link_to 'Back', quizzes_path %>
+<p><%= "Congratulations, you scored #{@quiz.score}/10!"%>
+	<%= link_to  "Take another Quiz?", quizzes_path, method: :post %>
+	<%= link_to  "Return to History?", quizzes_path %>

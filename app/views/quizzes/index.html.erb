@@ -1,29 +1,11 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Quizzes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Score</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @quizzes.each do |quiz| %>
-      <tr>
-        <td><%= quiz.score %></td>
-        <td><%= quiz.user_id %></td>
-        <td><%= link_to 'Show', quiz %></td>
-        <td><%= link_to 'Edit', edit_quiz_path(quiz) %></td>
-        <td><%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<ul>
+	<% @quizzes.each do |quiz| %>
+		<li>
+			<%=  link_to "#{quiz.created_at}", quiz %> <%= " | Score: #{quiz.score}" %>
+		</li>
+	<% end %>
+</ul>
 <br>
-
-<%= link_to 'New Quiz', new_quiz_path %>
+<%= link_to 'New Quiz', quizzes_path, method: :post %>

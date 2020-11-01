@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+<p>
+	<strong>Trivia:</strong>
+	<%= @question.trivium.prompt %>
+</p>
+<p>
+	<strong>Response:</strong>
+	<%= @question.response %>
+</p>
+<p>
+	<strong>Is correct:</strong>
+	<%= @question.is_correct.to_s %>
+</p>
+<% if @done %>
+	<%= link_to  "See Results", quiz_path(id: @quiz.id, quiz: {id: @quiz.id, score: @score}), method: :put %>
+<% else %>
+	<%= link_to 'Next Question', edit_question_path(@question) %>
+<% end %>

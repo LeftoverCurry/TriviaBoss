@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :quizzes
+  root to: 'quizzes#index'
+  get 'answer', to: 'questions#show'
+  put 'respond', to: 'questions#update', as: :respond
+
+  resources :quizzes, only: %i[index show create update]
+  resources :questions, only: %i[edit update show]
+
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'quiz#index'
 end
