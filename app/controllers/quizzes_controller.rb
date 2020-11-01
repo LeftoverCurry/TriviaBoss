@@ -17,7 +17,7 @@ class QuizzesController < ApplicationController
   def create
     @quiz = Quiz.create!(user_id: current_user.id)
     id = @quiz.questions.first.id
-    redirect_to ask_question_path(id: id)
+    redirect_to edit_question_path(id: id)
   end
 
   # PATCH/PUT /quizzes/1

@@ -22,9 +22,10 @@
 #
 FactoryBot.define do
   factory :question do
+    before(:create) { quiz }
     trivia { nil }
     quiz { nil }
-    response { "MyString" }
+    response { 'MyString' }
     is_correct? { false }
   end
 end
