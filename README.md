@@ -1,20 +1,20 @@
-#  README
+#  TriviaBoss
 
   
-## DESCRIPTION
+## Description
 TriviaBoss is an app created for the Tandem Apprenticeship Program code challenge built in [Ruby on Rails 6 ](https://rubyonrails.org/) with [Postgres](https://github.com/ged/ruby-pg) as the database and [Bootstrap 4](https://getbootstrap.com/) for styling. With it you can take a quiz with 10 unique questions, see your results, and see your scores over time.
 
 
-## SYSTEM DEPENDENCIES
+## System Dependencies
 -  Ruby v.2.6.3
 - Node v14.9.0
 
 
-## USAGE
+## Usage
 The application is currently being hosted on Heroku and [can be found here](https://sleepy-anchorage-99280.herokuapp.com/), or follow the installation instructions below.
   
   
-## INSTALLATION
+## Installation
 - Download repo
 - In your terminal travel to the app directory and run `bundle install && yarn install`
 - Create your database with `rails db:create`
@@ -23,7 +23,7 @@ The application is currently being hosted on Heroku and [can be found here](http
 - Run server with `rails s` and navigate to [localhost:3000](localhost:3000)
   
 
-## PACKAGES
+## Packages
 While this project was built to be as dependency-free as possible, I have included a few for testing, documentation, user authorization, and styling.
 | Gem | Purpose  |
 |--|--|
@@ -35,5 +35,5 @@ While this project was built to be as dependency-free as possible, I have includ
 |[Annotate](https://github.com/ctran/annotate_models)| Automated Schema Documentation on model objects |
 |[Devise](https://github.com/heartcombo/devise)| User Authorization|
 
-## TESTING
+## Testing
 Testing is handled by RSpec and can be run by entering `rspec path/to/test` into the console while in the project directory.
