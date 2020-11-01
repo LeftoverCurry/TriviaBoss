@@ -1,3 +1,13 @@
-<h1>Question:</h1>
-<p><%= @question.trivium.prompt %></p>
-<%= render 'form', question: @question %>
+<div class="row justify-content-center my-3">
+	<h1 class="display-1">Question:</h1>
+</div>
+<div class="row justify-content-center align-content-center my-4">
+	<div class="col-3"></div>
+	<div class="answer-box col-3 border border-secondary rounded p-3">
+		<p><%= @question.trivium.prompt %></p>
+	</div>
+	<div class="col-3"></div>
+</div>
+<div class="row justify-content-center">
+	<%= render 'form', question: @question %>
+</div>

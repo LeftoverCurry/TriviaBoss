@@ -1,18 +1,38 @@
-<p id="notice"><%= notice %></p>
-<p>
-	<strong>Trivia:</strong>
-	<%= @question.trivium.prompt %>
-</p>
-<p>
-	<strong>Response:</strong>
-	<%= @question.response %>
-</p>
-<p>
-	<strong>Is correct:</strong>
-	<%= @question.is_correct.to_s %>
-</p>
-<% if @done %>
-	<%= link_to  "See Results", quiz_path(id: @quiz.id, quiz: {id: @quiz.id, score: @score}), method: :put %>
-<% else %>
-	<%= link_to 'Next Question', edit_question_path(@question) %>
-<% end %>
+<div class="row justify-content-center">
+	<h1 class="display-2">Question:</h1>
+</div>
+<div class="row justify-content-center align-content-center my-4">
+	<div class="col-3"></div>
+	<div class="answer-box col-3 border border-secondary rounded align-content-center p-3">
+		<p>
+			<%= @previous_question.trivium.prompt %>
+		</p>
+	</div>
+	<div class="col-3"></div>
+</div>
+<div class="row justify-content-center">
+	<h1 class="display-2">Response:</h1>
+</div>
+<div class="row justify-content-center align-content-center my-4">
+	<div class="col-3"></div>
+	<div class="answer-box col-3 border border-secondary rounded align-content-center p-3">
+		<p>
+			<%= @previous_question.response %>
+		</p>
+	</div>
+	<div class="col-3"></div>
+</div>
+<div class="row justify-content-center">
+	<% if @previous_question.is_correct %>
+		<p class="correct-response"> <%= "Congratulations! Your answer of #{ @previous_question.response } was correct!" %> </p>
+	<% else %>
+		<p class="incorrect-response"> <%= "Sorry, your choice of #{ @previous_question.response } was incorrect!  The correct answer was #{ @previous_question.trivium.correct }!" %></p>
+	<% end %>
+</div>
+<div class="row justify-content-center">
+	<% if @done %>
+		<%= button_to  "See Results", quiz_path(id: @quiz.id, quiz: {id: @quiz.id, score: @score}), method: :put, class: "btn btn-primary" %>
+	<% else %>
+		<%= button_to 'Next Question', edit_question_path(@question), method: :get, class: "btn btn-primary" %>
+	<% end %>
+</div>
