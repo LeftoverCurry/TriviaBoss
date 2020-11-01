@@ -21,11 +21,6 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   # Only the user name validations are handled here.  For additional validations
   # see testing suite for Devise Gem
-  describe 'validations' do
-    subject { create :user }
-    it { should validate_presence_of(:name) }
-    it { should validate_uniqueness_of(:name) }
-  end
 
   describe 'associations' do
     it { should have_many(:quizzes) }
