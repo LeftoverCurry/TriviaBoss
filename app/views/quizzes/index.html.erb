@@ -1,11 +1,20 @@
-<p id="notice"><%= notice %></p>
-<h1>Quizzes</h1>
-<ul>
-	<% @quizzes.each do |quiz| %>
-		<li>
-			<%=  link_to "#{quiz.created_at.strftime('%D')}", quiz %> <%= " | Score: #{quiz.score}" %>
-		</li>
-	<% end %>
-</ul>
-<br>
-<%= button_to 'New Quiz', quizzes_path, method: :post %>
+<div class="row justify-content-center">
+	<h1 class="display-1 mb-2 text-center">Quizzes</h1>
+</div>
+<div class="row justify-content-center">
+	<div class="col-3">
+		<% @quizzes.each do |quiz| %>
+			<div class="row justify-content-center">
+				<%=  link_to "#{quiz.created_at.strftime('%D')}", quiz %> <%= " | Score: #{quiz.score}" %>
+			</div>
+		<% end %>
+	</div>
+</div>
+<div class="row justify-content-center mt-4">
+	<div class="col-1 m-4">
+		<%= button_to 'New Quiz', quizzes_path, method: :post, class: "btn btn-lg btn-primary" %>
+	</div>
+	<div class="col-1 m-4">
+		<%= button_to 'Log Out', destroy_user_session_path, method: :delete, class: "btn btn-lg btn-primary"%>
+	</div>
+</div>

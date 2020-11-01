@@ -26,7 +26,13 @@ class QuestionsController < ApplicationController
     @question.update_attributes(is_correct: @question.trivium.correct ==
                                             (question_params[:response]),
                                 response: question_params['response'])
-    redirect_to @question
+    if @question.is_correct.nil?
+      redirect_to @question
+    elsif @question.is_correct
+      redirect_to @question, notice: 'You answered correctly!'
+    else
+      redirect_to @question, alert: 'Oh, no! That was incorrect!'
+    end
   end
 
   private

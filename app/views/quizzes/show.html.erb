@@ -1,4 +1,7 @@
-<p id="notice"><%= notice %></p>
-<p><%= "Congratulations, you scored #{@quiz.score}/10!"%>
-	<%= link_to  "Take another Quiz?", quizzes_path, method: :post %>
-	<%= link_to  "Return to History?", quizzes_path %>
+<div class="row h-100 justify-content-center">
+	<h1 class="display-2 text-center align-self-center">
+		<%= "Congratulations, you scored #{@quiz.score}/10!" %>
+	</h1>
+	<%= button_to  "Take another Quiz?", quizzes_path, method: :post, class: "btn btn-lg btn-primary m-2" %>
+	<%= button_to  "Return to History?", quizzes_path, method: :get, class: "btn btn-lg btn-primary m-2" %>
+</div>

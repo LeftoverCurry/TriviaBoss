@@ -1,8 +1,10 @@
 <%= form_with(model: question, local: true) do |f| %>
-	<ul>
+	<div class='form-group mb-4'>
 		<% answers(@question).each do |answer| %>
-			<li><%= f.radio_button :response, answer %><%= answer %></li>
+			<p class="text-left">
+				<%= f.radio_button :response, answer, class: 'form-check-input' %><%= answer %>
+			</p>
 		<%end%>
-	</ul>
-	<%= f.submit %>
+	</div>
+	<%= f.submit "Answer Question", class: 'btn btn-lg btn-primary answer mt-3' %>
 <% end %>

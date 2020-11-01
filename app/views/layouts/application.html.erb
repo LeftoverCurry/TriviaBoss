@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>TriviaBoss</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-
-  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
-
-<body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
-</body>
-
+	<head>
+		<title>TriviaBoss</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+		<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
+	<body>
+		<div class="container wrapper hidden">
+			<% unless notice.nil? %>
+				<div class="notice alert alert-success">
+					<p class="lead align-content-center"><%= notice %></p>
+				</div>
+			<% end %>
+			<% unless alert.nil? %>
+				<div class="alert alert-danger">
+					<p class="lead align-content-center"><%= alert %></p>
+				</div>
+			<% end %>
+			<%= yield %>
+		</div>
+	</body>
 </html>
