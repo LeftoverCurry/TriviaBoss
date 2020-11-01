@@ -5,7 +5,7 @@
 	<div class="col-3">
 		<% @quizzes.each do |quiz| %>
 			<div class="row justify-content-center">
-				<%=  link_to "#{quiz.created_at.strftime('%D')}", quiz %> <%= " | Score: #{quiz.score}" %>
+				<%= "#{quiz.created_at.strftime('%D')} | Score: #{quiz.score}" %>
 			</div>
 		<% end %>
 	</div>
