@@ -3,9 +3,9 @@
 <ul>
 	<% @quizzes.each do |quiz| %>
 		<li>
-			<%=  link_to "#{quiz.created_at}", quiz %> <%= " | Score: #{quiz.score}" %>
+			<%=  link_to "#{quiz.created_at.strftime('%D')}", quiz %> <%= " | Score: #{quiz.score}" %>
 		</li>
 	<% end %>
 </ul>
 <br>
-<%= link_to 'New Quiz', quizzes_path, method: :post %>
+<%= button_to 'New Quiz', quizzes_path, method: :post %>
